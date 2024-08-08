@@ -13,17 +13,11 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-<<<<<<< HEAD
 
-=======
-  # Enable OpenGL
-  hardware.graphics.enable = true;
->>>>>>> bada16eef061f117cdbbe38b952d317de369cab5
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-<<<<<<< HEAD
     # Modesetting is required.
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -35,17 +29,6 @@
   # Enable Hyprland window manager
   programs.hyprland.enable = true;
 
-=======
-
-  # Modesetting is required.
-  modesetting.enable = true;
-  powerManagement.enable = true;
-  powerManagement.finegrained = false;
-  open = false;
-  nvidiaSettings = true;
-  package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
->>>>>>> bada16eef061f117cdbbe38b952d317de369cab5
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -115,7 +98,6 @@
     description = "gordy";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-<<<<<<< HEAD
      waybar
      bitwarden-cli
     ];
@@ -124,12 +106,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-=======
-    bitwarden-cli
-    ];
-  };
-
->>>>>>> bada16eef061f117cdbbe38b952d317de369cab5
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -137,7 +113,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-<<<<<<< HEAD
   #  wget
   autorandr
   git
@@ -147,15 +122,6 @@
   neofetch
   neovim
   ripgrep
-=======
-  firefox
-  gh
-  git
-  lf
-  neofetch
-  neovim
-  pciutils
->>>>>>> bada16eef061f117cdbbe38b952d317de369cab5
   zsh
   ];
 

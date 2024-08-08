@@ -1,72 +1,173 @@
-# Gordy's NIXOS System!
+# NixOS Install Diary
 
-A _lot_ of this is teken from Vimjoyer's setup [here](https://github.com/vimjoyer/nixconf/tree/main)
+## General Goals
+1. Turn my computer from an object to a config and back that shit up on Github
+2. Have the prettiest damn desktop and terminal experience
+3. Configure NixOS in a way that doesn't disappoint future Gordy
 
-Can also check out his Youtube video "Ultimate NixOS Guide | Flakes | Home-manager". Avoid older videos; they do not use a modular setup and you _will_ get even more confused.
+nixos.wiki bad! wiki.nixos.org good!
+nix.dev bad! nixos.org good!
 
-## Building the OS
+## Instructions:
+1. Update nix channels to use the latest OS version and latest packages (this is like apt-get update or brew update)
+    `sudo nix-channel --add https://channels.nixos.org/24.05 nixos`
+    `sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs`
+    `sudo nix-channel --update`
 
-Run:
+    **Why?**
+    * Because your installer USB is using nix 23 or something
+    * Because it gets you the most up to date versions of packages
+### NO FLAKES NO FLAKES NO FLAKES NO FLAKES NO FLAKES
 
-`nixos-rebuild switch --flake ~/mysystem/#work`
+2. Build ~/mysystem directory
+    `mkdir ~/mysystem`
+    `cp /etc/nixos/configuration.nix ~/mysystem`
+    `cp /etc/nixos/hardware-configuration.nix ~/mysystem`
+    `echo 'export MY_NIX="/home/gordy/mysystem/configuration.nix"' | tee -a ~/.bashrc && source ~/.bashrc`
 
-Then fix whatever error comes up and try again!
+    **Why?**
+    * Because putting the working configuration.nix outside of /etc/ gives you non-root access
+    * Because if you fuck the configuration.nix up you have a backup right there
+    * Because you can push the entire /mysystem folder to github
 
-## Current errors
-what i'm dealing with rn
+3. System Build 1: Minimum-viable packages
+    `nano ~/mysystem/configuration.nix`
+    Add to system packages:
+        * neovim
+        * git
+        * neofetch
+    `sudo nixos-rebuild switch -I nixos-config=$MY_NIX`
 
-### home-manager.users.gordy.environment does not exist!
+    **Why?**
+    * Because nano fucking sucks and you're not gonna configure nvidia drivers with it
+    * Because they are really obvious when the install goes right
+    * Because git is needed for your precious nvim plugins
+
+
+4. System Build 2: Nvidia drivers
+    `nvim ~/mysystem/configuration.nix`
+    Add to system packages:
+        * pciutils
+        * lf
+        * ripgrep
+    Add this at the top underneath `boot.loader.efi.canTouchEfiVariables`:
+```python
+  # Enable OpenGL
+  hardware.graphics.enable = true;
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+  # Modesetting is required.
+  modesetting.enable = true;
+  powerManagement.enable = true;
+  powerManagement.finegrained = false;
+  open = false;
+  nvidiaSettings = true;
+  package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 ```
-[gordy@nixos:~/mysystem]$ nixos-rebuild switch --flake ~/mysystem/#work --verbose
-$ nix --extra-experimental-features nix-command flakes build --out-link /tmp/nixos-rebuild.DLoHcD/nixos-rebuild /home/gordy/mysystem/#nixosConfigurations."work".config.system.build.nixos-rebuild --verbose
-$ exec /nix/store/9wfnnfzqqg0z00gqwc09pz6gswp2yr1z-nixos-rebuild/bin/nixos-rebuild switch --flake /home/gordy/mysystem/#work --verbose
-building the system configuration...
-Building in flake mode.
-$ nix --extra-experimental-features nix-command flakes build /home/gordy/mysystem/#nixosConfigurations."work".config.system.build.toplevel --verbose --out-link /tmp/nixos-rebuild.NsiUNO/result
-error:
-       … while calling the 'head' builtin
+    
+    `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
 
-         at /nix/store/4cpakzyvfw1rmm9v5i3387x6jd2h1v86-source/lib/attrsets.nix:1575:11:
+    (How often do I need to reboot the system for these changes to take effect?)
 
-         1574|         || pred here (elemAt values 1) (head values) then
-         1575|           head values
-             |           ^
-         1576|         else
+    **Why?**
+    * Because it comes from the offical NixOS wiki
+    * Beause the latest nvidia drivers are less fucky about Wayland / XWayland
+    * Because those packages can help troubleshoot when the driver inevitably doesn't work
+    * Because many of the custom settings (package, boot things) come from troubleshooting threads on Discourse
 
-       … while evaluating the attribute 'value'
+5. Troubleshoot Nvidia drivers
+    `nvidia-smi` Opens info about the GPU activity
+    `nvidia-settings` GUI with GPU settings and profiles
+    `lsmod | grep nvidia` Checks if the driver is loaded
+    `sudo modprobe nvidia` Loads the driver
+    `sudo reboot` to reboot the system
 
-         at /nix/store/4cpakzyvfw1rmm9v5i3387x6jd2h1v86-source/lib/modules.nix:821:9:
+6. System build 3: Add hyprland
+7. Add all the user packages
+8. Push to github
 
-          820|     in warnDeprecation opt //
-          821|       { value = addErrorContext "while evaluating the option `${showOption loc}':" value;
-             |         ^
-          822|         inherit (res.defsFinal') highestPrio;
+## Attempt 1:
+First attempt, starting out strong!
+* Flakes
+* Home-Manager
+* Following vimjoyer's early Youtube videos and git repo
+* Modular project with a large footprint
+* Many dependancies that I didn't want to use
 
-       (stack trace truncated; use '--show-trace' to show the full trace)
+### Post-Mortem
+**Cause of death:** Playing picky-choosy with the dependencies upset the balance, and broke the config. Either I need to start from something simpler, or jsut do all the same things as vimjoyer.
 
-       error: The option `home-manager.users.gordy.environment' does not exist. Definition values:
-       - In `/nix/store/da5hjsld2q4k54xykml11p4c50pvp3kc-source/nixos/common.nix':
-           {
-             _type = "if";
-             condition = false;
-             content = {
-               pathsToLink = [
-           ...
-```
+## Attempt 2:
+Going back to where attempt #1 left off to try and push it through.
+I made a post on the NixOS Discourse asking for help, and I learned:
+* Home Manager and flakes have a weird relationship
+* NixOs Modules and Home Manager Modules can step on each other's toes
+* Home Manager is responsible for why the error messages look like trash.
 
-I have no idea where the .environment is being called! Or is this a problem where it is not being called but is supposed to? I don't know! These logs are trash!!
+### Post-Mortem
+**Cause of death:** Could not fix an error message about "cannot set property on 'home.users.gordy.environment' because environment don't exist.
 
-### Unknown homeConfigurations and homeManagerModules
-This _might_ be related to the above. When I run `nix flake show` I see that the nix config and modules are A OK, but the home manager stuff is not recognized. This probable has to do with the ./hosts/default/home.nix file?
+## Attempt #3
+Starting my own modular project skeleton from scratch.
+* Flakes
+* Home manager
+* different folders for nix modules, home manager modules
+* individual configs for packages
+* leveraging some of vimjoyer's macros and libraries
+This one was okay but still very confusing. Yes I was building it from scratch, but it was a bit like tracing over a drawing of something unknown and then saying that it's all your work. I was able to get an initial build going, but then I ran into the error that killed the run.
 
-```
-[gordy@nixos:~/mysystem]$ nix flake show ~/mysystem
-path:/home/gordy/mysystem?lastModified=1723015892&narHash=sha256-baVHD%2BPpBbmTAgJz9pW6pZLrGJzHPbZNfX1Rr8oJEM4%3D
-├───homeConfigurations: unknown
-├───homeManagerModules: unknown
-├───nixosConfigurations
-│   └───work: NixOS configuration
-└───nixosModules
-    └───default: NixOS module
+### Post-Mortem
+**Cause of death:** Ran out of space on the boot drive.
 
+## Attempt #4
+Armed with new knowledge from Discourse, I re-installed nixOS so that I could put it on a larger partition. The new tenants were:
+* Flakes
+* home manager
+* one single modules/ dir
+* build from first principles
+This time started off okay, but then went downhill. I couldn't figure out how to install home manager again! Then I set up a flake that leveraged home manager (without installing home manager) and somehow it built? But then the NVidia drivers were still wonky. The drivers installed but didn't run. Like, `neofetch` shows the GPU, but `nvidia-smi` and `nvidia-settings` say that there is no driver running.
 
+### Post-Mortem 
+**Cause of death:** De-privlidged myself, and without `sudo` I could not build new system generations. Fresh install!
+
+## Attempts #5 & #6
+Both of these attempts never got past the boot loader.
+
+### Post-Mortem
+**Cause of death:** Timeout waiting for /boot to mount.
+I played around with re-mounting a larger partition to /boot to try and fix the out-of-space problem from Attempt 3; however it also turns out that when I start playing around with partitions again and make a new /boot partition, then things go awry. Both attempts killed by the same bug, but I repeated it just to make sure.
+
+## Attempt #7
+This time I'm just overwriting the entire 4TB NVME drive - bye bye, windows partition!
+Started off strong! Writing my process down and having step-by-step instructions is super helpful. Not because I know what I'm doing, but it's great for:
+* Context switching - there is a lot of hurry upand wait, so I do other stuff. But then when I come back, or after I complete a step, the instructions eliminate that "uhhhh what now?" feeling
+* Copy of what's on the computer - While dealing with all the system crashes, it was really handy to have a refrence of what was supposed to be in the config. 
+* Record of things tried
+
+### Post-Mortem
+**Cause of death:** Deleted my working backup.
+I was dealing with an issue where the nvidia driver was crashing. Or maybe the OS itself was crashing? What would happen is Nix would boot, I'd select the latest generation, it would show some logs, then blank screen instead of GNOME login. When this happened, I would think "No problem, I'm using NixOS so I can just boot into an older profile (Gen 4) and try again! I don't have to worry abotu safe mode or anything, and my user data persists so I don't even have to re-trace my steps! Nix is great!"
+
+During one of those times I had booted into the backup, I realized that I now have 14 generations of nix clogging up my boot menu, so I went to work cleaning them up. I ran:
+
+`sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 1 2 3 5 6 7 8 9 10 11 12 13`
+
+`sudo nix-collect-garbage -d`
+
+NOOOOOOOOOO gen 4 got deleted somehow!! I have no idea how, but I suspect either:
+* the `--delete-generations` 1 arg was interpreted as 1 day, and since all my generations have happened just today, all got deleted
+* The `--delete-generations` interpreted `3 5` as a range meaning `[3,4,5]`
+* the `nix-collect-garbage -d` yeets all old generations
+
+After reading the manual, I found this lovely little bit:
+
+> There is also a convenient little utility nix-collect-garbage, which when invoked with the -d (--delete-old) switch deletes all old generations of all profiles in /nix/var/nix/profiles
+
+ah well, onto the next attempt.
+
+## Attempt #8
+OK I want to try something different this time, and try to minimize the number of system rebuilds. I'll hold my nose and use nano editor to add the nvidia drivers in to `configuration.nix`.

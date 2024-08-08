@@ -85,6 +85,7 @@ nix.dev bad! nixos.org good!
     `lsmod | grep nvidia` Checks if the driver is loaded
     `sudo modprobe nvidia` Loads the driver
     `sudo reboot` to reboot the system
+    Consider banning the OSS Nvidia driver `boot.blacklistedKernelModules = [ “nouveau” ];`
 
 6. System build 3: Add hyprland
 7. Add all the user packages

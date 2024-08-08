@@ -67,17 +67,18 @@ nix.dev bad! nixos.org good!
   nvidiaSettings = true;
   package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
 ```
     
-    `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
+then `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
 
-    (How often do I need to reboot the system for these changes to take effect?)
+(How often do I need to reboot the system for these changes to take effect?)
 
-    **Why?**
-    * Because it comes from the offical NixOS wiki
-    * Beause the latest nvidia drivers are less fucky about Wayland / XWayland
-    * Because those packages can help troubleshoot when the driver inevitably doesn't work
-    * Because many of the custom settings (package, boot things) come from troubleshooting threads on Discourse
+**Why?**
+* Because it comes from the offical NixOS wiki
+* Beause the latest nvidia drivers are less fucky about Wayland / XWayland
+* Because those packages can help troubleshoot when the driver inevitably doesn't work
+* Because many of the custom settings (package, boot things) come from troubleshooting threads on Discourse
 
 5. Troubleshoot Nvidia drivers
     `nvidia-smi` Opens info about the GPU activity
@@ -85,6 +86,7 @@ nix.dev bad! nixos.org good!
     `lsmod | grep nvidia` Checks if the driver is loaded
     `sudo modprobe nvidia` Loads the driver
     `sudo reboot` to reboot the system
+    Consider banning the OSS Nvidia driver `boot.blacklistedKernelModules = [ “nouveau” ];`
 
 6. System build 3: Add hyprland
 7. Add all the user packages
@@ -171,6 +173,7 @@ ah well, onto the next attempt.
 
 ## Attempt #8
 OK I want to try something different this time, and try to minimize the number of system rebuilds. I'll hold my nose and use nano editor to add the nvidia drivers in to `configuration.nix`.
+<<<<<<< HEAD
 After only 2 system rebuilds (!) I was able to get back to where I was on attempt #7. Thing is, I'm still running into the blank screen issue. 
 
 Here is a list of settings I have tried tweaking. **None have fixed it!**
@@ -182,3 +185,11 @@ Here is a list of settings I have tried tweaking. **None have fixed it!**
 * Moved `services.xserver.videoDrivers = ["nvidia"]` from after `hardware.nvidia` to before it
 * Set `hardware.nvidia.powerManagement.enable` to `true` 
 * Updated NixOS from 24.05 to unstable branch
+=======
+
+Boot logs:
+```
+Aug 08 16:54:16 nixos (udev-worker)[663]: nvidia: Process '/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash -c 'mknod -m 666 /dev/nvidiactl c 195 255'' failed with exit code 1.
+Aug 08 16:54:16 nixos (udev-worker)[663]: nvidia: Process '/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash -c 'for i in $(cat /proc/driver/nvidia/gpus/*/information | grep Minor | cut -d \  -f 4); do mknod -m 666 /dev/nvidia${i} c 195 ${i}; done'' failed with exit code 1.
+```
+>>>>>>> bada16eef061f117cdbbe38b952d317de369cab5

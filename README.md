@@ -173,3 +173,9 @@ ah well, onto the next attempt.
 
 ## Attempt #8
 OK I want to try something different this time, and try to minimize the number of system rebuilds. I'll hold my nose and use nano editor to add the nvidia drivers in to `configuration.nix`.
+
+Boot logs:
+```
+Aug 08 16:54:16 nixos (udev-worker)[663]: nvidia: Process '/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash -c 'mknod -m 666 /dev/nvidiactl c 195 255'' failed with exit code 1.
+Aug 08 16:54:16 nixos (udev-worker)[663]: nvidia: Process '/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash -c 'for i in $(cat /proc/driver/nvidia/gpus/*/information | grep Minor | cut -d \  -f 4); do mknod -m 666 /dev/nvidia${i} c 195 ${i}; done'' failed with exit code 1.
+```

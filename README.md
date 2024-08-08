@@ -67,17 +67,18 @@ nix.dev bad! nixos.org good!
   nvidiaSettings = true;
   package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
 ```
     
-    `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
+then `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
 
-    (How often do I need to reboot the system for these changes to take effect?)
+(How often do I need to reboot the system for these changes to take effect?)
 
-    **Why?**
-    * Because it comes from the offical NixOS wiki
-    * Beause the latest nvidia drivers are less fucky about Wayland / XWayland
-    * Because those packages can help troubleshoot when the driver inevitably doesn't work
-    * Because many of the custom settings (package, boot things) come from troubleshooting threads on Discourse
+**Why?**
+* Because it comes from the offical NixOS wiki
+* Beause the latest nvidia drivers are less fucky about Wayland / XWayland
+* Because those packages can help troubleshoot when the driver inevitably doesn't work
+* Because many of the custom settings (package, boot things) come from troubleshooting threads on Discourse
 
 5. Troubleshoot Nvidia drivers
     `nvidia-smi` Opens info about the GPU activity

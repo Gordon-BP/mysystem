@@ -171,3 +171,14 @@ ah well, onto the next attempt.
 
 ## Attempt #8
 OK I want to try something different this time, and try to minimize the number of system rebuilds. I'll hold my nose and use nano editor to add the nvidia drivers in to `configuration.nix`.
+After only 2 system rebuilds (!) I was able to get back to where I was on attempt #7. Thing is, I'm still running into the blank screen issue. 
+
+Here is a list of settings I have tried tweaking. **None have fixed it!**
+* Remove the `boot.kernelParams`
+* Remove the `boot.extraModulesPackages`
+* Remove the `boot.initrd`
+* Switch driver version from 'latest` to `production`
+* Switch driver version from `production` to `stable`
+* Moved `services.xserver.videoDrivers = ["nvidia"]` from after `hardware.nvidia` to before it
+* Set `hardware.nvidia.powerManagement.enable` to `true` 
+* Updated NixOS from 24.05 to unstable branch

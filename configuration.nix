@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./sysModules/nvidia.nix
       ./sysModules/firefox.nix
+      ./sysModules/zsh.nix
     ];
 
   # Load nvidia driver for Xorg and Wayland
@@ -112,7 +113,6 @@
      mpd
      mpv
      nodejs_22
-     oh-my-zsh
      ollama
      opensnitch-ui
      poetry
@@ -159,9 +159,11 @@
   neofetch # System info util
   neovim # Text editor
   networkmanagerapplet # Gnome network manager gui
+  oh-my-zsh # ZSH plugins
   ripgrep # Text search util
   sqlite # In-memory database
   tofi # App launcher for wayland
+  tree
   tree-sitter # Parsing util
   unzip # compression util
   waybar # UI bar for wayland

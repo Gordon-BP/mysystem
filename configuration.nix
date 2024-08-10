@@ -8,26 +8,27 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./sysModules/nvidia.nix
+      ./sysModules/firefox.nix
     ];
 
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.opengl.enable = true;
+  # Enable flakes
+  nix.settings.experimental-features = ["nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    };
   # Enable Hyprland window manager
   programs.hyprland.enable = true;
+
+  # Bluetooth enable
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,8 +67,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+      };
   };
 
   # Enable CUPS to print documents.
@@ -96,35 +99,86 @@
   users.users.gordy = {
     isNormalUser = true;
     description = "gordy";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-     waybar
-     bitwarden-cli
+     bitwarden-desktop
+     bruno
+     expressvpn
+     glow
+     go
+     llm
+     luarocks
+     mpd
+     mpv
+     nodejs_22
+     oh-my-zsh
+     ollama
+     opensnitch-ui
+     poetry
+     pyright
+     python312Full
+     python312Packages.pip
+     transmission_4
+     typescript
+     zoom-us
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # Configure express vpn
+  services.expressvpn.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true; 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  autorandr
-  git
-  gh
-  gcc
-  lf
-  neofetch
-  neovim
-  ripgrep
-  zsh
+  programs.firefox.enable = true;
+  programs.zsh.enable = true;
+  # List packages installed in system profile. To search, run: $ nix search wget 
+
+  environment.systemPackages = with pkgs; [ 
+  # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default. wget 
+  blueman # GTK
+  bluez # Bluetooth protocol
+  dolphin # File manager
+  fd # OSS Find
+  gcc # C compiler - deoendancy for many pkgs
+  git # Source control
+  gh # Github
+  gnumake42 # make, also some kind of compiler IIRC
+  imv # Image viewer
+  # Hyprland ecosystem utils
+  hyprcursor
+  hyprlock
+  hypridle
+  hyprpaper
+  hyprpicker
+  kitty # GPU-accelerated terminal emulator
+  lf # terminal-based file explorer
+  libxkbcommon # C compiler
+  mesa # OSS 3D graphics
+  neofetch # System info util
+  neovim # Text editor
+  networkmanagerapplet # Gnome network manager gui
+  ripgrep # Text search util
+  sqlite # In-memory database
+  tofi # App launcher for wayland
+  tree-sitter # Parsing util
+  unzip # compression util
+  waybar # UI bar for wayland
+  xdg-desktop-portal-hyprland # Needed utils for Hyprland
+  zsh # Shell language
   ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    # From the hyprland wiki; needed for nvidia graphics cards
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    LIBVA_DRIVER_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "true";
+    };
+
+  services.blueman.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

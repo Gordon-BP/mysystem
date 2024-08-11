@@ -24,7 +24,7 @@
 
   # Configure express vpn
   services.expressvpn = {
-    enable = false;
+    enable = true;
     };
 
   # Github info

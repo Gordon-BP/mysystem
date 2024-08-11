@@ -2,10 +2,6 @@
 { pkgs, ... }:
 
 {
-  # Systemd services setup
-  systemd.packages = with pkgs; [
-    auto-cpufreq
-  ];
   
   # Enable Services
   services.geoclue2.enable = true;

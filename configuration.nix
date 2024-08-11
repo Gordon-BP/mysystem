@@ -18,11 +18,11 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  boot.initrd = {
-    enable = true;
-    systemd.enable = true;
-  };
-  boot.consoleLogLevel = 3;
+  # boot.initrd = {
+  #   enable = true;
+  #   systemd.enable = true;
+  # };
+  boot.consoleLogLevel = 4;
   boot.plymouth = {
     # Plymouth powers pretty boot animations!
     enable = true;
@@ -143,21 +143,22 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK
     bluez # Bluetooth protocol
-    greetd.tuigreet # Minimal login program
-    imv # Image viewer
-    hunspell # Spell checker lib
-    hunspellDicts.en-us
+#    greetd.tuigreet # Minimal login program
+    # imv # Image viewer
+    # hunspell # Spell checker lib
+    # hunspellDicts.en-us
     kitty # GPU-accelerated terminal emulator
     neovim # Text editor
-    openssh # SSH connection utl
-    pamixer # Pulse Audio mixer
-    pavucontrol # Pulse audio controller
-    sqlite # In-memory database
-    tofi # App launcher for wayland
-    unzip # compression util
+    # openssh # SSH connection utl
+    # pamixer # Pulse Audio mixer
+    # pavucontrol # Pulse audio controller
+    # sqlite # In-memory database
+    # tofi # App launcher for wayland
+    # unzip # compression util
   ];
 
-  
+  programs.zsh.enable = true;
+
   environment.variables = {
     EDITOR = "nvim";
     };

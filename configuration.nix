@@ -13,8 +13,16 @@
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes" ];
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    timeout = 2;
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+  boot.initrd = {
+    enable = true;
+    systemd.enable = true;
+  };
+  boot.consoleLogLevel = 3;
   boot.plymouth = {
     # Plymouth powers pretty boot animations!
     enable = true;

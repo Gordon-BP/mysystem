@@ -26,6 +26,7 @@ zsh
         }
       '';
       promptInit = ''
+        eval 'gh auth token | gh auth login --with-token'
         eval "$(zoxide init zsh)"
       '';
       };

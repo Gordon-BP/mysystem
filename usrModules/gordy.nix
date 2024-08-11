@@ -25,6 +25,12 @@
   # Configure express vpn
   services.expressvpn.enable = true;
 
+  # Github info
+  environment.variables = {
+    GIT_AUTHOR_NAME = "Gordon-BP";
+    GIT_AUTHOR_EMAIL = "gordynumberone@protonmail.com";
+  };
+
   # Change runtime directory size
   # services.logind.extraConfig = "RuntimeDirectorySize=8G";
 }

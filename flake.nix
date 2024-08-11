@@ -20,6 +20,7 @@
        ./sysModules/services.nix
        ./sysModules/zsh.nix
         ./usrModules/gordy.nix
+        ./usrModules/hyprland.nix
        ./usrModules/lsp.nix
        ./usrModules/terminal-utils.nix
        ./usrModules/theme.nix

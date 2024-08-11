@@ -56,6 +56,7 @@ in
         # Check about:config for options.
         Preferences = { 
           "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+          "browser.bookmarks.autoExportHTML" = { Value = true; Status = "locked"; };
           "extensions.pocket.enabled" = { Value = false; Status = "locked"; };
           "extensions.screenshots.disabled" = { Value = false; Status = "locked"; };
           "browser.topsites.contile.enabled" = { Value = false; Status = "locked"; };

@@ -12,6 +12,18 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
+        ./sysModules/firefox.nix
+        ./sysModules/hyprland.nix
+        ./sysModules/info-fetchers.nix
+        ./sysModules/nvidia.nix
+        ./sysModules/screen.nix
+        ./sysModules/services.nix
+        ./sysModules/zsh.nix
+        ./usrModules/gordy.nix
+        ./usrModules/lsp.nix
+        ./usrModules/terminal-utils.nix
+        ./usrModules/theme.nix
+        ./usrModules/virtualisation.nix
         ];
     };
   };

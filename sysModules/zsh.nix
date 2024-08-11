@@ -1,11 +1,15 @@
 
 {config, pkgs, inputs, ...} : 
 {
+environment.systemPackages = with pkgs; [ 
+oh-my-zsh
+zsh
+];
   programs.zsh = {
         enable = true;
         ohMyZsh = {
           enable = true;
-          theme = "robbyrussell";
+          theme = "dpoggi";
           plugins = [
             "sudo"
             "git"

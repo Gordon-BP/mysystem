@@ -17,7 +17,6 @@
   services.mpd.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
-  services.auto-cpufreq.enable = true;
   # services.gnome.core-shell.enable = true;
   # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 

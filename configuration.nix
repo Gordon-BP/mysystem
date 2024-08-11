@@ -18,10 +18,10 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  # boot.initrd = {
-  #   enable = true;
-  #   systemd.enable = true;
-  # };
+  boot.initrd = {
+    enable = true;
+    systemd.enable = true;
+  };
   boot.consoleLogLevel = 4;
   boot.plymouth = {
     # Plymouth powers pretty boot animations!

@@ -23,7 +23,10 @@
   };
 
   # Configure express vpn
-  services.expressvpn.enable = true;
+  services.expressvpn = {
+    enable = true;
+    autoStart = false;
+    };
 
   # Github info
   environment.variables = {

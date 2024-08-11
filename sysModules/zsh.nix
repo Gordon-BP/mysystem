@@ -16,6 +16,18 @@ zsh
             "vi-mode"
           ];
         };
+      shellAliases = {
+        new_llama="_new_l370 '$*'";
+        llama="_l370 '$*'";
+      };
+      interactiveShellInit = ''
+        function _l370(){ 
+          llm --continue --template llama70b "$*" | glow -
+        }
+      '';
+      promptInit = ''
+        eval "$(zoxide init zsh)"
+      '';
       };
 
 }

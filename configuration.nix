@@ -51,14 +51,14 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 3000 3301 3302 3400 ]
-  };
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 3000 3301 3302 3400 ];
+  # };
 
   # Set your time zone.
   time.timeZone = "Asia/Singapore";
-  time.hardwareClockInLocalTime = true;
+  # time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_SG.UTF-8";
@@ -138,7 +138,7 @@
     greetd.tuigreet # Minimal login program
     imv # Image viewer
     hunspell # Spell checker lib
-    hunspell.en_US
+    hunspellDicts.en-us
     kitty # GPU-accelerated terminal emulator
     neovim # Text editor
     openssh # SSH connection utl
@@ -152,11 +152,6 @@
   
   environment.variables = {
     EDITOR = "nvim";
-    # From the hyprland wiki; needed for nvidia graphics cards
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    LIBVA_DRIVER_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "true";
     };
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -176,17 +171,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

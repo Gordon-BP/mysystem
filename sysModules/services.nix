@@ -19,7 +19,6 @@
   	gnome2.GConf
   ];
   services.mpd.enable = true;
-  programs.dolphin.enable = true;
   services.tumbler.enable = true; 
   services.fwupd.enable = true;
   services.auto-cpufreq.enable = true;
@@ -29,7 +28,6 @@
   environment.systemPackages = with pkgs; [
     at-spi2-atk
     avizo
-    chrootkit # Vulrability scanner
     cliphist
     curl
     dunst

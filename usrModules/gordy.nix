@@ -26,5 +26,5 @@
   services.expressvpn.enable = true;
 
   # Change runtime directory size
-  services.logind.extraConfig = "RuntimeDirectorySize=8G";
+  # services.logind.extraConfig = "RuntimeDirectorySize=8G";
 }

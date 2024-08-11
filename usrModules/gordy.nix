@@ -24,8 +24,7 @@
 
   # Configure express vpn
   services.expressvpn = {
-    enable = true;
-    autoStart = false;
+    enable = false;
     };
 
   # Github info

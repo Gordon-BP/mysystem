@@ -23,13 +23,6 @@
     systemd.enable = true;
   };
   boot.consoleLogLevel = 4;
-  boot.plymouth = {
-    # Plymouth powers pretty boot animations!
-    enable = true;
-    font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-    themePackages = [ pkgs.catppuccin-plymouth ];
-    theme = "catppuccin-macchiato";
-  };
 
   # Bluetooth enable
   hardware.bluetooth = {
@@ -143,7 +136,7 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK
     bluez # Bluetooth protocol
-    catppuccin-plymouth # Bootloader theme
+    catppuccin # Pastel themes
     git # Source control
     greetd.tuigreet # Minimal login program
     imv # Image viewer
@@ -163,6 +156,9 @@
 
   environment.variables = {
     EDITOR = "nvim";
+    GTK_THEME = "catppuccin-macchiato-teal-standard";
+    XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
+    HYPERCURSOR_THEME = "Catppuccin1Macchiato-Teal";
     };
   # Enable the OpenSSH daemon.
   services.openssh = {

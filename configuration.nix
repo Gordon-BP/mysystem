@@ -23,13 +23,13 @@
     systemd.enable = true;
   };
   boot.consoleLogLevel = 4;
-  # boot.plymouth = {
-  #   # Plymouth powers pretty boot animations!
-  #   enable = true;
-  #   font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-  #   themePackages = [ pkgs.catppuccin-plymouth ];
-  #   theme = "catppuccin-macchiato";
-  # };
+  boot.plymouth = {
+    # Plymouth powers pretty boot animations!
+    enable = true;
+    font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+    themePackages = [ pkgs.catppuccin-plymouth ];
+    theme = "catppuccin-macchiato";
+  };
 
   # Bluetooth enable
   hardware.bluetooth = {
@@ -143,8 +143,9 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK
     bluez # Bluetooth protocol
-    git
-   greetd.tuigreet # Minimal login program
+    catppuccin-plymouth # Bootloader theme
+    git # Source control
+    greetd.tuigreet # Minimal login program
     imv # Image viewer
     hunspell # Spell checker lib
     hunspellDicts.en-us

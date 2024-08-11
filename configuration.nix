@@ -14,7 +14,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes" ];
   # Bootloader.
   boot.loader = {
-    timeout = 2;
+    # timeout = 2;
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
@@ -23,13 +23,13 @@
     systemd.enable = true;
   };
   boot.consoleLogLevel = 4;
-  boot.plymouth = {
-    # Plymouth powers pretty boot animations!
-    enable = true;
-    font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-    themePackages = [ pkgs.catppuccin-plymouth ];
-    theme = "catppuccin-macchiato";
-  };
+  # boot.plymouth = {
+  #   # Plymouth powers pretty boot animations!
+  #   enable = true;
+  #   font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+  #   themePackages = [ pkgs.catppuccin-plymouth ];
+  #   theme = "catppuccin-macchiato";
+  # };
 
   # Bluetooth enable
   hardware.bluetooth = {
@@ -143,18 +143,19 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK
     bluez # Bluetooth protocol
-#    greetd.tuigreet # Minimal login program
-    # imv # Image viewer
-    # hunspell # Spell checker lib
-    # hunspellDicts.en-us
+    git
+   greetd.tuigreet # Minimal login program
+    imv # Image viewer
+    hunspell # Spell checker lib
+    hunspellDicts.en-us
     kitty # GPU-accelerated terminal emulator
     neovim # Text editor
-    # openssh # SSH connection utl
-    # pamixer # Pulse Audio mixer
-    # pavucontrol # Pulse audio controller
-    # sqlite # In-memory database
-    # tofi # App launcher for wayland
-    # unzip # compression util
+    openssh # SSH connection utl
+    pamixer # Pulse Audio mixer
+    pavucontrol # Pulse audio controller
+    sqlite # In-memory database
+    tofi # App launcher for wayland
+    unzip # compression util
   ];
 
   programs.zsh.enable = true;

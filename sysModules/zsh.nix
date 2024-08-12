@@ -9,7 +9,7 @@ zsh
         enable = true;
         ohMyZsh = {
           enable = true;
-          theme = "dpoggi";
+          theme = "alanpeabody";
           plugins = [
             "sudo"
             "git"

@@ -49,6 +49,7 @@
   environment.systemPackages = with pkgs; [
     numix-icon-theme-circle
     colloid-icon-theme
+    catppuccin
     catppuccin-gtk
     catppuccin-kvantum
     catppuccin-cursors.macchiatoTeal

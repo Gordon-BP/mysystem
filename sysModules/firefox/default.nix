@@ -1,6 +1,8 @@
+# Config for firefox web browser
 {config, pkgs, inputs, ...} : 
 let
-
+  # Rycee firefox-addons packages
+  firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
 in
 {
   # Configure Firefox.

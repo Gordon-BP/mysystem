@@ -8,8 +8,8 @@ in
   programs.firefox = {
     enable = true;
     /* ---- POLICIES ---- */
-      # Check about:policies#documentation for options.
-      policies = {
+    # Check about:policies#documentation for options.
+    policies = {
         DisableTelemetry = true;
         DisableFirefoxStudies = true;
         EnableTrackingProtection = {
@@ -22,6 +22,7 @@ in
         DisableFirefoxAccounts = true;
         DisableAccounts = true;
         DisableFirefoxScreenshots = true;
+        OfferToSaveLogins = false;
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";
         DontCheckDefaultBrowser = true;
@@ -55,7 +56,9 @@ in
         /* ---- PREFERENCES ---- */
         # Check about:config for options.
         Preferences = { 
+          "gfx.webrender.all" = { Value = false; Status = "locked"; };
           "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+          "browser.bookmarks.autoExportHTML" = { Value = true; Status = "locked"; };
           "extensions.pocket.enabled" = { Value = false; Status = "locked"; };
           "extensions.screenshots.disabled" = { Value = false; Status = "locked"; };
           "browser.topsites.contile.enabled" = { Value = false; Status = "locked"; };
@@ -73,6 +76,7 @@ in
           "browser.newtabpage.activity-stream.showSponsored" = { Value = false; Status = "locked"; };
           "browser.newtabpage.activity-stream.system.showSponsored" = { Value = false; Status = "locked"; };
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = { Value = false; Status = "locked"; };
+          "browser.startup.homepage" = { Value = "file:///home/gordy/.config/startup.html"; Status = "locked"; };
         };
       };
     };

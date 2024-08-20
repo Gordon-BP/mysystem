@@ -3,33 +3,44 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./sysModules/nvidia.nix
-      ./sysModules/firefox.nix
-      ./sysModules/zsh.nix
     ];
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes" ];
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Enable Hyprland window manager
-  programs.hyprland.enable = true;
+  boot.loader = {
+    # timeout = 2;
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+  boot.initrd = {
+    enable = true;
+    systemd.enable = true;
+  };
+  boot.consoleLogLevel = 4;
 
   # Bluetooth enable
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
+  services.blueman.enable = true;
+
+  # Display manager # Enable Display Manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,9 +51,14 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 3000 3301 3302 3400 ];
+  # };
 
   # Set your time zone.
   time.timeZone = "Asia/Singapore";
+  # time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_SG.UTF-8";
@@ -92,95 +108,67 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  
+  # Fonts!
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    nerd-font-patcher
+  ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.gordy = {
-    isNormalUser = true;
-    description = "gordy";
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-     bitwarden-desktop
-     bruno
-     expressvpn
-     glow
-     go
-     llm
-     luarocks
-     mpd
-     mpv
-     nodejs_22
-     ollama
-     opensnitch-ui
-     poetry
-     pyright
-     python312Full
-     python312Packages.pip
-     transmission_4
-     typescript
-     zoom-us
-    ];
-  };
-
-  # Configure express vpn
-  services.expressvpn.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true; 
+  
+  # Automatic garbage collection
+  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
   # List packages installed in system profile. To search, run: $ nix search wget 
-
   environment.systemPackages = with pkgs; [ 
-  # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default. wget 
-  blueman # GTK
-  bluez # Bluetooth protocol
-  dolphin # File manager
-  fd # OSS Find
-  gcc # C compiler - deoendancy for many pkgs
-  git # Source control
-  gh # Github
-  gnumake42 # make, also some kind of compiler IIRC
-  imv # Image viewer
-  # Hyprland ecosystem utils
-  hyprcursor
-  hyprlock
-  hypridle
-  hyprpaper
-  hyprpicker
-  kitty # GPU-accelerated terminal emulator
-  lf # terminal-based file explorer
-  libxkbcommon # C compiler
-  mesa # OSS 3D graphics
-  neofetch # System info util
-  neovim # Text editor
-  networkmanagerapplet # Gnome network manager gui
-  oh-my-zsh # ZSH plugins
-  ripgrep # Text search util
-  sqlite # In-memory database
-  tofi # App launcher for wayland
-  tree
-  tree-sitter # Parsing util
-  unzip # compression util
-  waybar # UI bar for wayland
-  xdg-desktop-portal-hyprland # Needed utils for Hyprland
-  zsh # Shell language
+    blueman # GTK
+    bluez # Bluetooth protocol
+    catppuccin # Pastel themes
+    git # Source control
+    greetd.tuigreet # Minimal login program
+    imv # Image viewer
+    hunspell # Spell checker lib
+    hunspellDicts.en-us
+    kitty # GPU-accelerated terminal emulator
+    neovim # Text editor
+    openssh # SSH connection utl
+    pamixer # Pulse Audio mixer
+    pavucontrol # Pulse audio controller
+    sqlite # In-memory database
+    tofi # App launcher for wayland
+    unzip # compression util
   ];
+
+  programs.zsh.enable = true;
 
   environment.variables = {
     EDITOR = "nvim";
-    # From the hyprland wiki; needed for nvidia graphics cards
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    LIBVA_DRIVER_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "true";
+    GTK_THEME = "catppuccin-macchiato-teal-standard";
+    XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
+    HYPERCURSOR_THEME = "Catppuccin1Macchiato-Teal";
     };
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "gordy" ];
+    };
+  };
 
-  services.blueman.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -188,17 +176,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

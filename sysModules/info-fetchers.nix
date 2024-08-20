@@ -12,7 +12,6 @@
     btop
     kmon
     wlr-randr
-    gpu-viewer
     dig
     speedtest-rs
   ];

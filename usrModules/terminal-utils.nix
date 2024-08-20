@@ -7,7 +7,9 @@ in
   environment.systemPackages = with pkgs; [
   aria # multithread downloader
   bat # cat with syntax highlighting
+  chafa # Terminal graphics
   cmatrix # Enter the matrix
+  ctpv # Image previewer for lf
   fd # OSS Find
   fzf # cli fuzzy match
   glow # Render markdown in the terminal
@@ -26,6 +28,6 @@ in
   tree # Util to list dir contents
   tree-sitter # Parsing util
   viu # images in the terminal
-  zoxide # cd with memory
+  # zoxide # cd with memory, but slows zsh startup
   ];
 }

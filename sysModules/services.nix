@@ -29,16 +29,19 @@
     ffmpeg_6-full
     gcc # C compiler - deoendancy for many pkgs
     git # Source control
-    gifsicle
     gh # Github
     gnumake42 # make, also some kind of compiler IIRC
+    grimblast # Screenshot util
     libxkbcommon # C compiler
     networkmanagerapplet # Gnome network manager gui
+    nwg-look # GTK3 Settings editor
     psi-notify
     playerctl
+    poppler_utils # PDF Rendering Library
     poweralertd
     psmisc
     qt6.qtwayland
+    ueberzug # Image preview tools
     usbutils
     waybar
     wget

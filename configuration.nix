@@ -131,26 +131,6 @@
   };
 
   # List packages installed in system profile. To search, run: $ nix search wget 
-  # users.users.eve.isNormalUser = true;
-  # home-manager.users.gordy = { pkgs, ... }: {
-  #   home.packages = with pkgs;[
-  #    bitwarden-desktop # OSS Password manager with GUI
-  #    bruno # OSS API Client, like Postman
-  #    discord # Promote brain rot
-  #    expressvpn # VPN service with good cli
-  #    mpd # music player
-  #    mpv # video player
-  #    ollama # Local LLM server app
-  #    opensnitch-ui # application-level firewall, like LuLu
-  #    transmission_4 # OSS bittorrent
-  #    zoom-us # Video conferencing
-  #   ];
-  #   programs.bash.enable = true;
-  #
-  #   # The state version is required and should stay at the version you
-  #   # originally installed.
-  #   home.stateVersion = "24.05";
-  # };
   environment.systemPackages = with pkgs; [ 
     blueman # GTK
     bluez # Bluetooth protocol

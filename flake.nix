@@ -2,15 +2,12 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Specify the source of and Nixpkgs.
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "path:/home/gordy/nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, ... }@inputs:
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
@@ -28,6 +25,8 @@
        ./sysModules/screen.nix
        ./sysModules/services.nix
        ./sysModules/zsh.nix
+        ./usrModules/azure.nix
+        ./usrModules/databases.nix
         ./usrModules/gordy.nix
         ./usrModules/hyprland.nix
        ./usrModules/lsp.nix
@@ -38,5 +37,4 @@
       };
 
     };
-  };
 }

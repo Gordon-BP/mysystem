@@ -6,7 +6,7 @@ in
 {
   # Enable OpenGL
   # in future nixos versions this is renamed to hardware.graphics
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       mesa # OSS 3D graphics
@@ -16,6 +16,8 @@ in
   };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
+  # Enable CUDA
+  nixpkgs.config.cudaSupport = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;

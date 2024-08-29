@@ -35,7 +35,8 @@ in
      zoom-us # Video conferencing
     ];
   };
-
+# Enable the picosnitch service
+services.picosnitch.enable = true;
   # Configure express vpn
   services.expressvpn = {
      enable = true;

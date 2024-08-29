@@ -118,7 +118,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Allow unfree packages
+  # Allow unfree packages, like Nvidia drivers
   nixpkgs.config.allowUnfree = true; 
   
   # Automatic garbage collection
@@ -132,12 +132,10 @@
 
   # List packages installed in system profile. To search, run: $ nix search wget 
   environment.systemPackages = with pkgs; [ 
-    blueman # GTK
+    blueman # GTK bluetooth GUI
     bluez # Bluetooth protocol
-    catppuccin # Pastel themes
     git # Source control
     greetd.tuigreet # Minimal login program
-    imv # Image viewer
     hunspell # Spell checker lib
     hunspellDicts.en-us
     kitty # GPU-accelerated terminal emulator
@@ -149,8 +147,6 @@
     tofi # App launcher for wayland
     unzip # compression util
   ];
-
-  programs.zsh.enable = true;
 
   environment.variables = {
     EDITOR = "nvim";

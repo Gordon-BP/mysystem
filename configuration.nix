@@ -144,6 +144,7 @@
     pamixer # Pulse Audio mixer
     pavucontrol # Pulse audio controller
     sqlite # In-memory database
+    xfce.thunar # Graphical file explorer
     tofi # App launcher for wayland
     unzip # compression util
   ];

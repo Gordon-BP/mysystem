@@ -11,8 +11,9 @@ zsh
           enable = true;
           theme = "alanpeabody";
           plugins = [
-            "sudo"
+            "direnv"
             "git"
+            "sudo"
             "vi-mode"
           ];
         };

@@ -148,7 +148,6 @@
     tofi # App launcher for wayland
     unzip # compression util
   ];
-  programs.direnv.enable = true; # Nix dev containers in directories
 
   environment.variables = {
     EDITOR = "nvim";

@@ -5,6 +5,7 @@ environment.systemPackages = with pkgs; [
 oh-my-zsh
 zsh
 ];
+  programs.direnv.enable = true; # Nix dev containers in directories
   programs.zsh = {
         enable = true;
         ohMyZsh = {

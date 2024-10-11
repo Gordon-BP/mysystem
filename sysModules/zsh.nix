@@ -5,7 +5,17 @@ environment.systemPackages = with pkgs; [
 oh-my-zsh
 zsh
 ];
-  programs.direnv.enable = true; # Nix dev containers in directories
+  #set to default values
+  programs.direnv = {
+    package = pkgs.direnv;
+    silent = false;
+    loadInNixShell = true;
+    direnvrcExtra = "";
+    nix-direnv = {
+      enable = true;
+      package = pkgs.nix-direnv;
+    };
+  };
   programs.zsh = {
         enable = true;
         ohMyZsh = {

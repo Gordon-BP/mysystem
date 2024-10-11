@@ -8,7 +8,6 @@ in
   aria # multithread downloader
   bat # cat with syntax highlighting
   chafa # Terminal graphics
-  cmatrix # Enter the matrix
   ctpv # Image previewer for lf
   fd # OSS Find
   fzf # cli fuzzy match

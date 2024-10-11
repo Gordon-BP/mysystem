@@ -21,12 +21,11 @@
   # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
   environment.systemPackages = with pkgs; [
-    at-spi2-atk
-    avizo
-    cliphist
-    curl
-    dunst
-    ffmpeg_6-full
+    at-spi2-atk # Assistive tech / accessibility
+    cliphist # Wayland clipboard mngr
+    curl # API Calls from terminal
+    dunst # Notification util
+    ffmpeg_6-full # Sound compression lib
     gcc # C compiler - deoendancy for many pkgs
     git # Source control
     gh # Github
@@ -35,23 +34,23 @@
     libxkbcommon # C compiler
     networkmanagerapplet # Gnome network manager gui
     nwg-look # GTK3 Settings editor
-    psi-notify
-    playerctl
+    psi-notify # alert on system resource saturation
+    playerctl # control media players with command line
     poppler_utils # PDF Rendering Library
-    poweralertd
-    psmisc
+    psmisc # A set of small useful utilities that use the proc filesystem
+    pulseaudio # Sound server
     qt6.qtwayland
     ueberzug # Image preview tools
-    usbutils
-    waybar
-    wget
-    wl-screenrec
-    wl-clipboard
-    wl-clip-persist
-    wlrctl
-    wtype
-    wlogout
+    usbutils # USB ports
+    waybar # Application dock / status bars
+    wget # CLI network call util
+    wl-screenrec # Screen recording
+    wl-clipboard # Clipboard management
+    wl-clip-persist # Clipboard management
+    wlrctl # Wayland extensions controls
+    wtype # Xdotool type for wayland (?)
+    wlogout # Wayland logout menu
     xdg-desktop-portal-hyprland # Needed utils for Hyprland
-    xdg-utils
+    xdg-utils # X server desktop integration
   ];
 }

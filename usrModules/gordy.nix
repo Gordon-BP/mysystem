@@ -14,7 +14,6 @@ in
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-     azure-cli # MS Azure cli utility
      bitwarden-desktop # OSS Password manager with GUI
      bruno # OSS API Client, like Postman
      catppuccin # Pastel theme
@@ -26,17 +25,15 @@ in
      llama-cpp # Run LLMs locally
      llm # frontend for talking to llms locally
      mpd # music player
-     mpv # video player
      ngrok # Expose local ports to the internet
+     obs-studio # Screen recording and streaming
      ollama # Local LLM server app
-     opensnitch-ui # application-level firewall, like LuLu
      ruff # python linter
      transmission_4 # OSS bittorrent
      vimPlugins.catppuccin-nvim # Catpuccin theme for neovim
      zoom-us # Video conferencing
     ];
   };
-
   # Configure express vpn
   services.expressvpn = {
      enable = true;

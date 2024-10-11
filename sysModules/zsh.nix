@@ -5,14 +5,26 @@ environment.systemPackages = with pkgs; [
 oh-my-zsh
 zsh
 ];
+  #set to default values
+  programs.direnv = {
+    package = pkgs.direnv;
+    silent = false;
+    loadInNixShell = true;
+    direnvrcExtra = "";
+    nix-direnv = {
+      enable = true;
+      package = pkgs.nix-direnv;
+    };
+  };
   programs.zsh = {
         enable = true;
         ohMyZsh = {
           enable = true;
           theme = "alanpeabody";
           plugins = [
-            "sudo"
+            "direnv"
             "git"
+            "sudo"
             "vi-mode"
           ];
         };
@@ -23,6 +35,9 @@ zsh
         nenv-list = "nix-env --list-generations --profile /nix/var/nix/profiles/system";
         nenv-delete = "nix-env --delete-generations --profile /nix/var/nix/profiles/system";
         helpme = "mdcat ~/.config/help.md";
+        morpho="cd ~/Documents/project-butterfly/src/morpho/";
+        blog="cd ~/hanakano-website/content/posts/";
+        fkn-login="gh auth token | gh auth login --with-token";
       };
       interactiveShellInit = ''
         function _l370(){ 
@@ -35,7 +50,6 @@ zsh
       promptInit = ''
       show_help
       '';
-        # eval 'gh auth token | gh auth login --with-token'
       };
 
 }

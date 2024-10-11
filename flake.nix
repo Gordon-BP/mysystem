@@ -3,8 +3,8 @@
 
   inputs = {
     # Specify the source of and Nixpkgs.
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "path:/home/gordy/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "path:/home/gordy/nixpkgs";
   };
 
   outputs = { nixpkgs, ... }@inputs:

@@ -27,10 +27,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    distrobox
-    podman-compose
-    podman-tui
-    qemu
+    distrobox # Podman / Docker wrapper
+    podman-compose # Container orchestration
+    podman-tui # Podman terminal ui
+    qemu # OSS Machine emulator
     # lazydocker
     # docker-credential-helpers
   ];

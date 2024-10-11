@@ -47,9 +47,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    numix-icon-theme-circle
-    colloid-icon-theme
-    catppuccin
+    numix-icon-theme-circle # Round desktop icons
+    catppuccin # Pastel theme
     catppuccin-gtk
     catppuccin-kvantum
     catppuccin-cursors.macchiatoTeal

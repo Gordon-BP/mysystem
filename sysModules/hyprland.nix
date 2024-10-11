@@ -7,22 +7,14 @@
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   environment.systemPackages = with pkgs; [
-    pyprland
-    hyprpicker
-    hyprcursor
-    hyprlock
-    hypridle
-    hyprpaper
-
-    wezterm
-    cool-retro-term
-
-    starship
-    helix
-
-    qutebrowser
-    zathura
-    mpv
-    imv
+    pyprland # Hyprland plugins
+    hyprpicker # color picker
+    hyprcursor # Cursor driver
+    hyprlock # Lock screen
+    hypridle # Idle locker
+    hyprpaper # Wallpaper util
+    wofi-emoji # Emoji picker
+    mpv # Media player
+    imv # Image viewer
   ];
 }

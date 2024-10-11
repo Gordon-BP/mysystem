@@ -70,7 +70,7 @@ nix.dev bad! nixos.org good!
 
 ```
     
-then `sudo nixos=rebuild switch -I nixos-config=$MY_NIX`
+then `sudo nixos-rebuild switch -I nixos-config=$MY_NIX`
 
 (How often do I need to reboot the system for these changes to take effect?)
 

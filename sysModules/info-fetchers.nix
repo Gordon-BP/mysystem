@@ -8,7 +8,7 @@
     ipfetch
     cpufetch
     nvitop # GPU resource tracker
-    btop
+    bottom
     kmon
     wlr-randr
     dig

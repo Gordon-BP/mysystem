@@ -1,12 +1,15 @@
 {config, pkgs, inputs, ...} : 
 let
-
+  firefox = pkgs.firefox.overrideAttrs (oldAttrs: rec {
+    version = "131.0.2";
+    });
 in
 {
 
   # Configure Firefox.
   programs.firefox = {
     enable = true;
+    package = firefox;
     /* ---- POLICIES ---- */
     # Check about:policies#documentation for options.
     policies = {
@@ -78,6 +81,9 @@ in
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = { Value = false; Status = "locked"; };
           "browser.startup.homepage" = { Value = "file:///home/gordy/.config/startup.html"; Status = "locked"; };
         };
+        wrapperConfig = {
+          pipewireSupport = true;
+          };
       };
     };
 }

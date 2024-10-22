@@ -8,5 +8,6 @@
   mysql-workbench # GUI for MySQL
   pgadmin4-desktopmode # GUI for Postgres DB, no sudo required
   postgresql # Run Postgres DB Locally
+  tidy-viewer # TUI pretty printer for csv files
   ];  
 }

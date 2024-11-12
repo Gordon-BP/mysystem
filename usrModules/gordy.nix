@@ -19,8 +19,13 @@ in
      catppuccin # Pastel theme
      catppuccin-cursors.macchiatoTeal # Cursor pack
      catppuccin-gtk # Catppuccin theme for GNOME
+     chromedriver # For running browser automation 
+     chromium # Basic google chrome
+     davinci-resolve # Video editing program
      discord # Promote brain rot
      expressvpn # VPN service with good cli
+     google-chrome # web browser
+     http-server # lightweight http server
      hugo # Website build util
      llama-cpp # Run LLMs locally
      llm # frontend for talking to llms locally
@@ -31,6 +36,7 @@ in
      ruff # python linter
      transmission_4 # OSS bittorrent
      vimPlugins.catppuccin-nvim # Catpuccin theme for neovim
+     yt-dlp # cli YouTube video download util
      zoom-us # Video conferencing
     ];
   };

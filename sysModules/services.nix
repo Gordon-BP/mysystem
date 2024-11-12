@@ -32,7 +32,6 @@
     gnumake42 # make, also some kind of compiler IIRC
     grimblast # Screenshot util
     libxkbcommon # C compiler
-    log4cxx # Logging framework for C++
     networkmanagerapplet # Gnome network manager gui
     nwg-look # GTK3 Settings editor
     psi-notify # alert on system resource saturation

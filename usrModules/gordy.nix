@@ -21,7 +21,6 @@ in
      catppuccin-gtk # Catppuccin theme for GNOME
      chromedriver # For running browser automation 
      chromium # Basic google chrome
-     davinci-resolve # Video editing program
      discord # Promote brain rot
      expressvpn # VPN service with good cli
      google-chrome # web browser

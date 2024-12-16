@@ -155,6 +155,8 @@
     GTK_THEME = "catppuccin-macchiato-teal-standard";
     XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
     HYPERCURSOR_THEME = "Catppuccin1Macchiato-Teal";
+    BROWSER = "firefox";
+    DEFAULT_BROWSER = "firefox";
     };
   # Enable the OpenSSH daemon.
   services.openssh = {

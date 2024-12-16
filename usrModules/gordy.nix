@@ -27,7 +27,7 @@ in
      http-server # lightweight http server
      hugo # Website build util
      llama-cpp # Run LLMs locally
-     llm # frontend for talking to llms locally
+     llm # cli for talking to llms locally
      mpd # music player
      ngrok # Expose local ports to the internet
      obs-studio # Screen recording and streaming

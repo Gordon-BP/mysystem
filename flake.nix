@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "Gordy's work computer flake";
 
   inputs = {
     # Specify the source of and Nixpkgs.
@@ -7,10 +7,11 @@
     # nixpkgs.url = "path:/home/gordy/nixpkgs";
     ghostty = {
       url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { nixpkgs,ghostty, ... }@inputs:
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
@@ -38,6 +39,5 @@
        ./usrModules/virtualisation.nix
         ];
       };
-
     };
 }

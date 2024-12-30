@@ -11,7 +11,6 @@ in
   ctpv # Image previewer for lf
   fd # OSS Find
   fzf # cli fuzzy match
-     ghostty.packages.x86_64-linux.default # Terminal Emulator
   glow # Render markdown in the terminal
   jq # cli JSON
   lazygit # git but with a tui

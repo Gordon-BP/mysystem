@@ -1,5 +1,5 @@
 # Defines Gordy user and their packages
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs,... }:
 let
   azure-cli = pkgs.azure-cli.withExtensions [
       pkgs.azure-cli.extensions.ssh
@@ -26,6 +26,7 @@ in
      google-chrome # web browser
      http-server # lightweight http server
      hugo # Website build util
+     inputs.ghostty.packages.${pkgs.system}.default # terminal emulator
      llama-cpp # Run LLMs locally
      llm # cli for talking to llms locally
      mpd # music player

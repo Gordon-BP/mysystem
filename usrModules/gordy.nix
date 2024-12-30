@@ -23,6 +23,7 @@ in
      chromium # Basic google chrome
      discord # Promote brain rot
      expressvpn # VPN service with good cli
+     ghostty.packages.x86_64-linux.default # Terminal Emulator
      google-chrome # web browser
      http-server # lightweight http server
      hugo # Website build util

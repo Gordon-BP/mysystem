@@ -173,7 +173,7 @@
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
-    "text/plain":["nvim.desktop"];
+    "text/plain"=["nvim.desktop"];
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

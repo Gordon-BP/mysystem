@@ -6,8 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "path:/home/gordy/nixpkgs";
     ghostty = {
-      url="github:ghostyy-org/ghostty";
-      };
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = { nixpkgs, ... }@inputs:

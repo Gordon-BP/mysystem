@@ -27,7 +27,6 @@ in
      http-server # lightweight http server
      hugo # Website build util
      inputs.ghostty.packages.${pkgs.system}.default # terminal emulator
-     llama-cpp # Run LLMs locally
      llm # cli for talking to llms locally
      mpd # music player
      ngrok # Expose local ports to the internet

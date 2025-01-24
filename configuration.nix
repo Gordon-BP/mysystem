@@ -134,6 +134,7 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK bluetooth GUI
     bluez # Bluetooth protocol
+    cmake # Build system generator
     file # Show file types
     git # Source control
     greetd.tuigreet # Minimal login program

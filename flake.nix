@@ -7,7 +7,6 @@
     # nixpkgs.url = "path:/home/gordy/nixpkgs";
     ghostty = {
       url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

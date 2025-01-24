@@ -10,14 +10,11 @@ nix.dev bad! nixos.org good!
 
 ## Instructions:
 1. Update nix channels to use the latest OS version and latest packages (this is like apt-get update or brew update)
-    `sudo nix-channel --add https://channels.nixos.org/24.05 nixos`
-    `sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs`
     `sudo nix-channel --update`
 
     **Why?**
     * Because your installer USB is using nix 23 or something
     * Because it gets you the most up to date versions of packages
-### NO FLAKES NO FLAKES NO FLAKES NO FLAKES NO FLAKES
 
 2. Build ~/mysystem directory
     `mkdir ~/mysystem`

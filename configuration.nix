@@ -169,12 +169,6 @@
     };
   };
 
-  # Define default applications for certain file types
-  xdg.mime.enable = true;
-  xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = {
-    "text/plain"=["nvim.desktop"];
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

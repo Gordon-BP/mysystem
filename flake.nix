@@ -9,9 +9,9 @@
 
   outputs = { nixpkgs, ... }@inputs:
   let
-    lib = nixpkgs.lib;
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit inputs; };
+  lib = nixpkgs.lib;
+  system = "x86_64-linux";
+  pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

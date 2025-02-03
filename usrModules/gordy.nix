@@ -26,7 +26,7 @@ in
      google-chrome # web browser
      http-server # lightweight http server
      hugo # Website build util
-     inputs.ghostty.packages.${pkgs.system}.default # terminal emulator
+     ghostty # Terminal Emulator
      llama-cpp # AI Inference program
      llm # cli for talking to llms locally
      mpd # music player

@@ -5,12 +5,9 @@
     # Specify the source of and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.url = "path:/home/gordy/nixpkgs";
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
   };
 
-  outputs = { nixpkgs,ghostty, ... }@inputs:
+  outputs = { nixpkgs, ... }@inputs:
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";

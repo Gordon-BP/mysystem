@@ -32,7 +32,7 @@ in
      mpd # music player
      ngrok # Expose local ports to the internet
      obs-studio # Screen recording and streaming
-     ollama # Local LLM server app
+     # ollama # Local LLM server app
      ruff # python linter
      transmission_4 # OSS bittorrent
      vimPlugins.catppuccin-nvim # Catpuccin theme for neovim

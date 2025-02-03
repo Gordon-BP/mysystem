@@ -13,7 +13,6 @@ in
   fzf # cli fuzzy match
   glow # Render markdown in the terminal
   jq # cli JSON
-  lazygit # git but with a tui
   lf # terminal-based file explorer
   llm # Talk to LLMs in the terminal
   mdcat # cat with markdown

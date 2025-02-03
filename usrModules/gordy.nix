@@ -1,5 +1,5 @@
 # Defines Gordy user and their packages
-{ lib, pkgs, inputs,... }:
+{ lib, pkgs, inputs,nixpkgs,... }:
 let
   azure-cli = pkgs.azure-cli.withExtensions [
       pkgs.azure-cli.extensions.ssh
@@ -13,7 +13,7 @@ in
     description = "gordy";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    packages = with nixpkgs; [
      bitwarden-desktop # OSS Password manager with GUI
      bruno # OSS API Client, like Postman
      catppuccin # Pastel theme

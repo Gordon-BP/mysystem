@@ -38,7 +38,8 @@ zsh
         morpho="cd ~/Documents/project-butterfly/src/morpho/";
         blog="cd ~/hanakano-website/content/posts/";
         fkn-login="gh auth token | gh auth login --with-token";
-      };
+        start-llama-server=" llama-server -m ~/models/qwen2.5-coder-1.5b-q8_0.gguf --port 8012 -ngl 99 -fa -ub 1024 -b 1024 --ctx-size 0 --cache-reuse 256";
+        };
       interactiveShellInit = ''
         function _l370(){ 
           llm --continue --template llama70b "$*" | glow -

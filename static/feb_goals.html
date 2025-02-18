@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>February 2024 Goals</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>February 2024 Goals</title>
+        <style>
         body {
             background-color: #1f2335;
             color: #a9b1d6;
@@ -129,164 +129,186 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        from { opacity: 0; }
+        to { opacity: 1; }
         }
 
         @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        from { opacity: 1; }
+        to { opacity: 0; }
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>February 2025 Goals</h1>
-        
-        <div class="overall-progress">
-            <div class="progress-circle large-progress">
-                <svg viewBox="0 0 100 100">
-                    <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                    <circle class="progress-bar" cx="50" cy="50" r="45"
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>February 2025 Goals</h1>
+            <div class="overall-progress">
+                <div class="progress-circle large-progress">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                        <circle class="progress-bar" cx="50" cy="50" r="45"
                             stroke-dasharray="282.7"
                             stroke-dashoffset="176.7"/>
-                </svg>
-                <div class="progress-text">0%</div>
-            </div>
-            <div class="overall-description">0% of the way to a killer month!</div>
-            <div class="filepath" onclick="copyPath()">~/mysystem/static/feb_goals.html</div>
-        </div>
-
-        <div class="goals-grid">
-            <div class="goal-card" data-total="2" data-current="1">
-                <h2 class="goal-title">Development Projects</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
-                                stroke-dasharray="282.7"
-                                stroke-dashoffset="141.35"/>
-                    </svg>
-                    <div class="progress-text">50%</div>
-                </div>
-                <p>1/2 Closed</p>
-            </div>
-
-            <div class="goal-card" data-total="15" data-current="0">
-                <h2 class="goal-title">Consulting Hours</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
-                                stroke-dasharray="282.7"
-                                stroke-dashoffset="282.7"/>
                     </svg>
                     <div class="progress-text">0%</div>
                 </div>
-                <p>0/15 Hours</p>
+                <div class="overall-description">0% of the way to a killer month!</div>
+                <div class="filepath" onclick="copyPath()">~/mysystem/static/feb_goals.html</div>
             </div>
 
-            <div class="goal-card" data-total="8" data-current="1">
-                <h2 class="goal-title">Lead Conversations</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
+            <div class="goals-grid">
+                <div class="goal-card" data-total="2" data-current="1">
+                    <h2 class="goal-title">Development Projects</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="141.35"/>
+                        </svg>
+                        <div class="progress-text">50%</div>
+                    </div>
+                    <p>1/2 Closed</p>
+                </div>
+
+                <div class="goal-card" data-total="15" data-current="2">
+                    <h2 class="goal-title">Consulting Hours</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="282.7"/>
+                        </svg>
+                        <div class="progress-text">13%</div>
+                    </div>
+                    <p>2/15 Hours</p>
+                </div>
+
+                <div class="goal-card" data-total="8" data-current="5">
+                    <h2 class="goal-title">Lead Conversations</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
                                 stroke-dasharray="282.7"
                                 stroke-dashoffset="247.4"/>
-                    </svg>
-                    <div class="progress-text">12.5%</div>
+                        </svg>
+                        <div class="progress-text">62.5%</div>
+                    </div>
+                    <p>5/8 Leads</p>
                 </div>
-                <p>1/8 Leads</p>
-            </div>
 
-            <div class="goal-card" data-total="1" data-current="0">
-                <h2 class="goal-title">New Demo</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
+                <div class="goal-card" data-total="1" data-current="0">
+                    <h2 class="goal-title">New Demo</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
                                 stroke-dasharray="282.7"
                                 stroke-dashoffset="282.7"/>
-                    </svg>
-                    <div class="progress-text">0%</div>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <p>0/1 Complete</p>
                 </div>
-                <p>0/1 Complete</p>
-            </div>
 
-            <div class="goal-card" data-total="2" data-current="1">
-                <h2 class="goal-title">Blog Posts</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
+                <div class="goal-card" data-total="2" data-current="1">
+                    <h2 class="goal-title">Blog Posts</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
                                 stroke-dasharray="282.7"
                                 stroke-dashoffset="141.35"/>
-                    </svg>
-                    <div class="progress-text">50%</div>
+                        </svg>
+                        <div class="progress-text">50%</div>
+                    </div>
+                    <p>1/2 Written</p>
                 </div>
-                <p>1/2 Written</p>
-            </div>
 
-            <div class="goal-card" data-total="1" data-current="0">
-                <h2 class="goal-title">Recurring Clients</h2>
-                <div class="progress-circle">
-                    <svg viewBox="0 0 100 100">
-                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
-                        <circle class="progress-bar" cx="50" cy="50" r="45"
+                <div class="goal-card" data-total="1" data-current="0">
+                    <h2 class="goal-title">Recurring Clients</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
                                 stroke-dasharray="282.7"
                                 stroke-dashoffset="282.7"/>
-                    </svg>
-                    <div class="progress-text">0%</div>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <p>0/1 Added</p>
                 </div>
-                <p>0/1 Added</p>
             </div>
         </div>
-    </div>
 
-    <div class="notification" id="notification">Path copied to clipboard!</div>
+        <div class="notification" id="notification">Path copied to clipboard!</div>
 
-    <script>
-        // Calculate overall progress
-        function updateOverallProgress() {
-            const goals = document.querySelectorAll('.goal-card');
-            let totalProgress = 0;
-            let totalGoals = 0;
-            
-            goals.forEach(goal => {
-                const current = parseFloat(goal.dataset.current);
-                const total = parseFloat(goal.dataset.total);
-                totalProgress += current;
-                totalGoals += total;
-            });
+        <script>
 
-            const overallPercentage = (totalProgress / totalGoals) * 100;
-            const roundedPercentage = Math.round(overallPercentage * 10) / 10;
-            
-            // Update the large progress circle
-            const largeCircle = document.querySelector('.large-progress .progress-bar');
-            const largeText = document.querySelector('.large-progress .progress-text');
-            const description = document.querySelector('.overall-description');
-            
-            largeCircle.style.strokeDashoffset = 282.7 * (1 - (roundedPercentage / 100));
-            largeText.textContent = `${roundedPercentage}%`;
-            description.textContent = `${roundedPercentage}% of the way to a killer month!`;
+// Function to update progress for all goal cards
+function updateGoalProgress() {
+    const goals = document.querySelectorAll('.goal-card');
+    let totalProgress = 0;
+    let totalGoals = 0;
+
+    goals.forEach(goal => {
+        const current = parseFloat(goal.dataset.current);
+        const total = parseFloat(goal.dataset.total);
+        const percentage = (current / total) * 100;
+        const roundedPercentage = Math.round(percentage * 10) / 10;
+
+        // Update the individual progress bar
+        const progressBar = goal.querySelector('.progress-bar');
+        if (progressBar) {
+            progressBar.style.strokeDashoffset = 282.7 * (1 - (percentage / 100));
         }
 
-        // Copy filepath to clipboard
-        function copyPath() {
-            const path = "~/mysystem/static/feb_goals.html";
-            navigator.clipboard.writeText(path).then(() => {
-                const notification = document.getElementById('notification');
-                notification.style.display = 'block';
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 2000);
-            });
+        // Update the individual progress text
+        const progressText = goal.querySelector('.progress-text');
+        if (progressText) {
+            progressText.textContent = `${roundedPercentage}%`;
         }
 
-        // Initialize
-        updateOverallProgress();
-    </script>
-</body>
+        // Aggregate for overall progress
+        totalProgress += current;
+        totalGoals += total;
+    });
+
+    // Update the overall progress bar
+    const overallPercentage = (totalProgress / totalGoals) * 100;
+    const roundedOverallPercentage = Math.round(overallPercentage * 10) / 10;
+
+    const largeCircle = document.querySelector('.large-progress .progress-bar');
+    const largeText = document.querySelector('.large-progress .progress-text');
+    const description = document.querySelector('.overall-description');
+
+    if (largeCircle) {
+        largeCircle.style.strokeDashoffset = 282.7 * (1 - (roundedOverallPercentage / 100));
+    }
+    if (largeText) {
+        largeText.textContent = `${roundedOverallPercentage}%`;
+    }
+    if (description) {
+        description.textContent = `${roundedOverallPercentage}% of the way to a killer month!`;
+    }
+}
+
+// Run updates on page load
+updateGoalProgress();
+
+// Copy filepath to clipboard
+function copyPath() {
+    const path = "~/mysystem/static/feb_goals.html";
+    navigator.clipboard.writeText(path).then(() => {
+        const notification = document.getElementById('notification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 2000);
+    });
+}
+</script>
+    </body>
 </html>

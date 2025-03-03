@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>February 2024 Goals</title>
+        <style>
+        body {
+            background-color: #1f2335;
+            color: #a9b1d6;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #24283b;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px #292e42;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #7aa2f7;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .overall-progress {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .overall-description {
+            color: #7dcfff;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .filepath {
+            color: #565f89;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+
+        .filepath:hover {
+            color: #7aa2f7;
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .goal-card {
+            background-color: #292e42;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .goal-title {
+            color: #7dcfff;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .progress-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle circle {
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .progress-bg {
+            stroke: #1f2335;
+        }
+
+        .progress-bar {
+            stroke: #ff9e64;
+            transition: stroke-dashoffset 0.3s;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffc777;
+            font-size: 1.2rem;
+        }
+
+        .large-progress circle {
+            stroke-width: 6;
+        }
+
+        .large-progress {
+            width: 150px;
+            height: 150px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #7aa2f7;
+            color: #1f2335;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: none;
+            animation: fadeIn 0.3s, fadeOut 0.3s 1.7s;
+        }
+
+        @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>February 2025 Goals</h1>
+            <div class="overall-progress">
+                <div class="progress-circle large-progress">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                        <circle class="progress-bar" cx="50" cy="50" r="45"
+                            stroke-dasharray="282.7"
+                            stroke-dashoffset="176.7"/>
+                    </svg>
+                    <div class="progress-text">0%</div>
+                </div>
+                <div class="overall-description">0% of the way to a killer month!</div>
+                <div class="filepath" onclick="copyPath()">~/mysystem/static/feb_goals.html</div>
+            </div>
+
+            <div class="goals-grid">
+                <div class="goal-card" data-total="2" data-current="1">
+                    <h2 class="goal-title">Development Projects</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="141.35"/>
+                        </svg>
+                        <div class="progress-text">50%</div>
+                    </div>
+                    <p>1/2 Closed</p>
+                </div>
+
+                <div class="goal-card" data-total="15" data-current="2">
+                    <h2 class="goal-title">Consulting Hours</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="282.7"/>
+                        </svg>
+                        <div class="progress-text">13%</div>
+                    </div>
+                    <p>2/15 Hours</p>
+                </div>
+
+                <div class="goal-card" data-total="8" data-current="5">
+                    <h2 class="goal-title">Lead Conversations</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="247.4"/>
+                        </svg>
+                        <div class="progress-text">100%</div>
+                    </div>
+                    <p>8/8 Leads</p>
+                </div>
+
+                <div class="goal-card" data-total="1" data-current="0">
+                    <h2 class="goal-title">New Demo</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="282.7"/>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <p>0/1 Complete</p>
+                </div>
+
+                <div class="goal-card" data-total="2" data-current="1">
+                    <h2 class="goal-title">Blog Posts</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="141.35"/>
+                        </svg>
+                        <div class="progress-text">50%</div>
+                    </div>
+                    <p>1/2 Written</p>
+                </div>
+
+                <div class="goal-card" data-total="1" data-current="0">
+                    <h2 class="goal-title">Recurring Clients</h2>
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"
+                                stroke-dasharray="282.7"
+                                stroke-dashoffset="282.7"/>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <p>0/1 Added</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification" id="notification">Path copied to clipboard!</div>
+
+        <script>
+
+// Function to update progress for all goal cards
+function updateGoalProgress() {
+    const goals = document.querySelectorAll('.goal-card');
+    let totalProgress = 0;
+    let totalGoals = 0;
+
+    goals.forEach(goal => {
+        const current = parseFloat(goal.dataset.current);
+        const total = parseFloat(goal.dataset.total);
+        const percentage = (current / total) * 100;
+        const roundedPercentage = Math.round(percentage * 10) / 10;
+
+        // Update the individual progress bar
+        const progressBar = goal.querySelector('.progress-bar');
+        if (progressBar) {
+            progressBar.style.strokeDashoffset = 282.7 * (1 - (percentage / 100));
+        }
+
+        // Update the individual progress text
+        const progressText = goal.querySelector('.progress-text');
+        if (progressText) {
+            progressText.textContent = `${roundedPercentage}%`;
+        }
+
+        // Aggregate for overall progress
+        totalProgress += current;
+        totalGoals += total;
+    });
+
+    // Update the overall progress bar
+    const overallPercentage = (totalProgress / totalGoals) * 100;
+    const roundedOverallPercentage = Math.round(overallPercentage * 10) / 10;
+
+    const largeCircle = document.querySelector('.large-progress .progress-bar');
+    const largeText = document.querySelector('.large-progress .progress-text');
+    const description = document.querySelector('.overall-description');
+
+    if (largeCircle) {
+        largeCircle.style.strokeDashoffset = 282.7 * (1 - (roundedOverallPercentage / 100));
+    }
+    if (largeText) {
+        largeText.textContent = `${roundedOverallPercentage}%`;
+    }
+    if (description) {
+        description.textContent = `${roundedOverallPercentage}% of the way to a killer month!`;
+    }
+}
+
+// Run updates on page load
+updateGoalProgress();
+
+// Copy filepath to clipboard
+function copyPath() {
+    const path = "~/mysystem/static/feb_goals.html";
+    navigator.clipboard.writeText(path).then(() => {
+        const notification = document.getElementById('notification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 2000);
+    });
+}
+</script>
+    </body>
+</html>

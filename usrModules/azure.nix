@@ -10,9 +10,9 @@ let
 
 
   environment.systemPackages = with pkgs; [
-     python312Packages.msal
-     python312Packages.msal-extensions
-     azure-cli # MS Azure cli utility
+     # python312Packages.msal
+     # python312Packages.msal-extensions
+     # azure-cli # MS Azure cli utility
     ];
 
 }

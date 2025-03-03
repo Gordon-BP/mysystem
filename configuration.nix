@@ -94,7 +94,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -134,6 +134,8 @@
   environment.systemPackages = with pkgs; [ 
     blueman # GTK bluetooth GUI
     bluez # Bluetooth protocol
+    cmake # Build system generator
+    file # Show file types
     git # Source control
     greetd.tuigreet # Minimal login program
     hunspell # Spell checker lib
@@ -154,6 +156,8 @@
     GTK_THEME = "catppuccin-macchiato-teal-standard";
     XCURSOR_THEME = "Catppuccin-Macchiato-Teal";
     HYPERCURSOR_THEME = "Catppuccin1Macchiato-Teal";
+    BROWSER = "firefox";
+    DEFAULT_BROWSER = "firefox";
     };
   # Enable the OpenSSH daemon.
   services.openssh = {

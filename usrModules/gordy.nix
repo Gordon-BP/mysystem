@@ -1,5 +1,5 @@
 # Defines Gordy user and their packages
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs,... }:
 let
   azure-cli = pkgs.azure-cli.withExtensions [
       pkgs.azure-cli.extensions.ssh
@@ -19,18 +19,24 @@ in
      catppuccin # Pastel theme
      catppuccin-cursors.macchiatoTeal # Cursor pack
      catppuccin-gtk # Catppuccin theme for GNOME
+     chromedriver # For running browser automation 
+     chromium # Basic google chrome
      discord # Promote brain rot
      expressvpn # VPN service with good cli
+     google-chrome # web browser
+     http-server # lightweight http server
      hugo # Website build util
-     llama-cpp # Run LLMs locally
-     llm # frontend for talking to llms locally
+     ghostty # Terminal Emulator
+     llama-cpp # AI Inference program
+     llm # cli for talking to llms locally
      mpd # music player
      ngrok # Expose local ports to the internet
      obs-studio # Screen recording and streaming
-     ollama # Local LLM server app
+     # ollama # Local LLM server app
      ruff # python linter
      transmission_4 # OSS bittorrent
      vimPlugins.catppuccin-nvim # Catpuccin theme for neovim
+     yt-dlp # cli YouTube video download util
      zoom-us # Video conferencing
     ];
   };

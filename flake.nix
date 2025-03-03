@@ -1,5 +1,5 @@
 {
-  description = "A simple NixOS flake";
+  description = "Gordy's work computer flake";
 
   inputs = {
     # Specify the source of and Nixpkgs.
@@ -9,9 +9,9 @@
 
   outputs = { nixpkgs, ... }@inputs:
   let
-    lib = nixpkgs.lib;
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit inputs; };
+  lib = nixpkgs.lib;
+  system = "x86_64-linux";
+  pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -35,6 +35,5 @@
        ./usrModules/virtualisation.nix
         ];
       };
-
     };
 }

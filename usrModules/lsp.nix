@@ -7,6 +7,7 @@
       go # Go programming language
       gopls # Go LSP
       lua # Lua programming language
+    lua-language-server # Lua LSP
       luarocks # Lua package manager
       node2nix # Tool to convert npm pkgs to nix
       nodePackages_latest.nodejs # Hot garbage

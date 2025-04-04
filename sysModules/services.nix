@@ -30,7 +30,8 @@
     git # Source control
     gh # Github
     gnumake42 # make, also some kind of compiler IIRC
-    grimblast # Screenshot util
+    grim # Screenshot util for wayland
+    grimblast # Screenshot util for hyprland
     libxkbcommon # C compiler
     networkmanagerapplet # Gnome network manager gui
     nwg-look # GTK3 Settings editor
@@ -40,6 +41,7 @@
     psmisc # A set of small useful utilities that use the proc filesystem
     pulseaudio # Sound server
     qt6.qtwayland
+    slurp # Grab regions in wayland
     ueberzug # Image preview tools
     usbutils # USB ports
     waybar # Application dock / status bars

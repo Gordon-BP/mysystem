@@ -19,6 +19,7 @@
       python312Full # Python programming language
       python312Packages.pip # OG Python package manager
       python312Packages.pynvim # Python client for neovim
+      stylua # Opinionated lua formatter
       uv # Python package installer
   ];  
 }

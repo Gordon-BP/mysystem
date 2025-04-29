@@ -140,7 +140,7 @@
     greetd.tuigreet # Minimal login program
     hunspell # Spell checker lib
     hunspellDicts.en-us
-    kitty # GPU-accelerated terminal emulator
+    ghostty # Terminal emulator
     neovim # Text editor
     openssh # SSH connection utl
     pamixer # Pulse Audio mixer

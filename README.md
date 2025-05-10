@@ -12,6 +12,10 @@ NixOS is a _complicated fucking system_ but it is totally possible for you to do
 
 `sudo nixos-rebuild switch --flake .`
 
+    > It might take a while, especially if you have to rebuild some of the packages like opencv
+    
+    > Also, if you get Nvidia driver mismatch errors, just reboot your system
+
 3. Take out the garbage
 
 `sudo nix-collect-garbage -d`

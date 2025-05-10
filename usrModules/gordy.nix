@@ -1,10 +1,7 @@
 # Defines Gordy user and their packages
 { lib, pkgs, inputs,... }:
 let
-  azure-cli = pkgs.azure-cli.withExtensions [
-      pkgs.azure-cli.extensions.ssh
-      pkgs.azure-cli.extensions.bastion
-    ];
+
 in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -26,9 +23,7 @@ in
      google-chrome # web browser
      http-server # lightweight http server
      hugo # Website build util
-     ghostty # Terminal Emulator
      llama-cpp # AI Inference program
-     llm # cli for talking to llms locally
      mpd # music player
      ngrok # Expose local ports to the internet
      obs-studio # Screen recording and streaming

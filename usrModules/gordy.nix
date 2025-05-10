@@ -1,8 +1,7 @@
 # Defines Gordy user and their packages
 { lib, pkgs, inputs,... }:
 let
-  llm-gguf = pkgs.python312Packages.llm-gguf;
-  llm-openai = pkgs.python312Packages.llm-openai;
+
 in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -25,9 +24,6 @@ in
      http-server # lightweight http server
      hugo # Website build util
      llama-cpp # AI Inference program
-     llm.withPlugins([
-       llm-gguf, llm-openai
-      ])# cli for talking to llms locally
      mpd # music player
      ngrok # Expose local ports to the internet
      obs-studio # Screen recording and streaming
